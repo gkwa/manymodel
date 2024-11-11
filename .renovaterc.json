@@ -21,7 +21,7 @@
       "matchDepTypes": ["input"],
       "matchDepNames": ["tflint_version"],
       "extractVersion": "^v(?<version>.*)$",
-      "packageName": "terraform-linters/tflint"
+      "matchPackageNames": ["terraform-linters/tflint"]
     }
   ],
   "platformAutomerge": true,
