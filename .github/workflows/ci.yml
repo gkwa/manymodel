@@ -2,28 +2,28 @@ name: Lint
 "on":
   push:
     branches:
-    - main
+      - main
   pull_request: null
 jobs:
   tflint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      name: Checkout source code
-    - uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
-      name: Cache plugin dir
-      with:
-        path: ~/.tflint.d/plugins
-        key: tflint-${{ hashFiles('.tflint.hcl') }}
-    - uses: terraform-linters/setup-tflint@8093687ecc9dcbfa88d07c103ad4176739a7287e # v4
-      name: Setup TFLint
-      with:
-        tflint_version: v0.52.0
-    - name: Show version
-      run: tflint --version
-    - name: Init TFLint
-      run: tflint --init
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_PAT3 }}
-    - name: Run TFLint
-      run: tflint -f compact
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        name: Checkout source code
+      - uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
+        name: Cache plugin dir
+        with:
+          path: ~/.tflint.d/plugins
+          key: tflint-${{ hashFiles('.tflint.hcl') }}
+      - uses: terraform-linters/setup-tflint@8093687ecc9dcbfa88d07c103ad4176739a7287e # v4
+        name: Setup TFLint
+        with:
+          tflint_version: v0.52.0
+      - name: Show version
+        run: tflint --version
+      - name: Init TFLint
+        run: tflint --init
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT3 }}
+      - name: Run TFLint
+        run: tflint -f compact
