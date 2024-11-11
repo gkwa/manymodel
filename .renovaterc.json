@@ -8,21 +8,6 @@
       "matchDepTypes": ["*"],
       "rangeStrategy": "pin",
       "recreateWhen": "always"
-    },
-    {
-      "description": "Pin all GitHub Actions to commit hash",
-      "matchDepTypes": ["action"],
-      "pinDigests": true,
-      "versioning": "docker"
-    },
-    {
-      "description": "Group TFLint related updates",
-      "groupName": "tflint",
-      "matchPackageNames": ["terraform-linters/tflint"],
-      "versioning": "docker",
-      "matchDepTypes": ["action-input"],
-      "extractVersion": "^v(?<version>.*)$",
-      "datasourceTemplate": "github-releases"
     }
   ],
   "platformAutomerge": true,
