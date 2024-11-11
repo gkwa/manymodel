@@ -13,16 +13,16 @@
       "description": "Pin all GitHub Actions to commit hash",
       "matchDepTypes": ["action"],
       "pinDigests": true,
-      "matchPackageNames": ["*"],
-      "versioning": "semver",
-      "extractVersion": "^v(?<version>.*)$"
+      "versioning": "docker"
     },
     {
       "description": "Group TFLint related updates",
       "groupName": "tflint",
-      "versioning": "semver",
+      "matchPackageNames": ["terraform-linters/tflint"],
+      "versioning": "docker",
+      "matchDepTypes": ["action-input"],
       "extractVersion": "^v(?<version>.*)$",
-      "matchPackageNames": ["/^tflint/"]
+      "datasourceTemplate": "github-releases"
     }
   ],
   "platformAutomerge": true,
