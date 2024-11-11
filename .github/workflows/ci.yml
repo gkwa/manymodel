@@ -20,9 +20,10 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         name: Checkout source code
       - name: System info
+        shell: bash
         run: |
-          uname -a
-          arch
+          uname -a || true
+          arch || true
           file $(which tflint) || true
       - uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
         name: Cache plugin dir
@@ -41,6 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT3 }}
           TF_LOG: DEBUG
       - name: Debug plugin path
+        shell: bash
         run: |
           ls -la ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/0.34.0/ || true
           file ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/0.34.0/tflint-ruleset-aws || true
