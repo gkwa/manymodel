@@ -10,18 +10,19 @@
       "recreateWhen": "always"
     },
     {
-      "matchManagers": ["github-actions"],
+      "description": "Pin all GitHub Actions to commit hash",
       "matchDepTypes": ["action"],
-      "matchPackageNames": ["terraform-linters/setup-tflint"],
+      "pinDigests": true,
+      "matchPackageNames": ["*"],
+      "versioning": "semver",
       "extractVersion": "^v(?<version>.*)$"
     },
     {
-      "description": "Match tflint_version input parameter",
-      "matchManagers": ["github-actions"],
-      "matchDepTypes": ["input"],
-      "matchDepNames": ["tflint_version"],
-      "extractVersion": "^v(?<version>.*)$",
-      "matchPackageNames": ["terraform-linters/tflint"]
+      "description": "Group TFLint related updates",
+      "groupName": "tflint",
+      "matchPackagePatterns": ["^tflint"],
+      "versioning": "semver",
+      "extractVersion": "^v(?<version>.*)$"
     }
   ],
   "platformAutomerge": true,
