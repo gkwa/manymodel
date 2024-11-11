@@ -13,8 +13,16 @@
       "matchManagers": ["github-actions"],
       "matchDepTypes": ["action"],
       "matchPackageNames": ["terraform-linters/setup-tflint"],
+      "extractVersion": "^v(?<version>.*)$"
+    },
+    {
+      "description": "Match tflint_version input parameter",
+      "matchManagers": ["github-actions"],
+      "matchDepTypes": ["input"],
+      "matchDepNames": ["tflint_version"],
       "extractVersion": "^v(?<version>.*)$",
-      "matchDepNames": ["/^tflint_version$/"]
+      "datasource": "github-releases",
+      "packageName": "terraform-linters/tflint"
     }
   ],
   "platformAutomerge": true,
