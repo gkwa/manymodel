@@ -11,10 +11,10 @@
     },
     {
       "matchManagers": ["github-actions"],
+      "matchDepTypes": ["action"],
       "matchPackageNames": ["terraform-linters/setup-tflint"],
-      "extractVersion": "^v(?<version>.*)$",
-      "matchDepNames": ["tflint_version"],
-      "groupName": "tflint"
+      "matchDepPatterns": ["^tflint_version$"],
+      "extractVersion": "^v(?<version>.*)$"
     }
   ],
   "platformAutomerge": true,
