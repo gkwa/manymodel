@@ -8,6 +8,13 @@
       "matchDepTypes": ["*"],
       "rangeStrategy": "pin",
       "recreateWhen": "always"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["terraform-linters/setup-tflint"],
+      "extractVersion": "^v(?<version>.*)$",
+      "matchDepNames": ["tflint_version"],
+      "groupName": "tflint"
     }
   ],
   "platformAutomerge": true,
