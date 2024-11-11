@@ -20,9 +20,9 @@
     {
       "description": "Group TFLint related updates",
       "groupName": "tflint",
-      "matchPackagePatterns": ["^tflint"],
       "versioning": "semver",
-      "extractVersion": "^v(?<version>.*)$"
+      "extractVersion": "^v(?<version>.*)$",
+      "matchPackageNames": ["/^tflint/"]
     }
   ],
   "platformAutomerge": true,
