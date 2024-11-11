@@ -2,26 +2,33 @@ name: Lint
 "on":
   push:
     branches:
-      - main
-  pull_request: null
+      - "*"
+  pull_request:
+    branches:
+      - "*"
 jobs:
   tflint:
     name: Build & Test
     strategy:
       matrix:
         os:
-        - ubuntu-latest
-        - macOS-latest
-        - windows-latest
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         name: Checkout source code
+      - name: System info
+        run: |
+          uname -a
+          arch
+          file $(which tflint) || true
       - uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
         name: Cache plugin dir
         with:
           path: ~/.tflint.d/plugins
-          key: tflint-${{ hashFiles('.tflint.hcl') }}
+          key: tflint-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('.tflint.hcl') }}
       - uses: terraform-linters/setup-tflint@8093687ecc9dcbfa88d07c103ad4176739a7287e # v4
         name: Setup TFLint
         with:
@@ -32,5 +39,10 @@ jobs:
         run: tflint --init
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT3 }}
+          TF_LOG: DEBUG
+      - name: Debug plugin path
+        run: |
+          ls -la ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/0.34.0/ || true
+          file ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/0.34.0/tflint-ruleset-aws || true
       - name: Run TFLint
         run: tflint -f compact
