@@ -21,7 +21,6 @@
       "matchDepTypes": ["input"],
       "matchDepNames": ["tflint_version"],
       "extractVersion": "^v(?<version>.*)$",
-      "datasource": "github-releases",
       "packageName": "terraform-linters/tflint"
     }
   ],
