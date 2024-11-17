@@ -41,7 +41,7 @@ jobs:
       - name: Debug plugin path
         shell: bash
         run: |
-          ls -la ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/0.34.0/ || true
-          file ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/0.34.0/tflint-ruleset-aws || true
+          ls -la ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/*/ || true
+          file ~/.tflint.d/plugins/github.com/terraform-linters/tflint-ruleset-aws/*/tflint-ruleset-aws || true
       - name: Run TFLint
         run: tflint -f compact
