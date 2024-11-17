@@ -37,7 +37,6 @@ jobs:
       - name: Init TFLint
         run: tflint --init
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT3 }}
           TF_LOG: DEBUG
       - name: Debug plugin path
         shell: bash
